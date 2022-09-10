@@ -1,46 +1,32 @@
-# Getting Started with Create React App
+# Cypress Template
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a template project that shows how to setup Cypress with a React project.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+1. Install [NodeJS 16.x](https://nodejs.org/en/download/)
+2. Run `npm install`
+3. Run `npm run e2e`
 
-### `npm start`
+## Adding Cypress To A New Project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Run `npm i --save-dev cypress`
+2. Run `npx cypress open` to open cypress for the first  time
+3. Go through the setup, select E2E testing and have cypress auto generate the given files.
+4. Create a new `tsconfig.json` in the `cypress/` directory. Feel free to use this project's `cypress/tsconfig.json` as a template.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+If you're looking to add custom commands, you'll need to do the following:
 
-### `npm test`
+1. Create a file `cypress/global.d.ts` to hold your typings.
+2. In your `cypress/support/commands.ts` file, add your custom command. Your typings for that will go in the `global.d.ts` you created earlier.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I also like to setup interceptors as a function, as seen in [`utils.ts`](cypress/support/utils.ts). This lets me import it and use it in a `beforeEach` block in my tests.
 
-### `npm run build`
+For scripting, I like to add [concurrently](https://www.npmjs.com/package/concurrently) and sometimes [cross-env](https://www.npmjs.com/package/cross-env), depending on the situation.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This allows me to add scripts like `e2e` and `e2e:watch` as seen in this project's [`package.json`](package.json).
+## Further Reading
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [Create React App](https://create-react-app.dev/docs/getting-started/)
+- [Cypress](https://docs.cypress.io/guides/overview/why-cypress)
+- [Cypress Real World App](https://github.com/cypress-io/cypress-realworld-app)
