@@ -5,7 +5,7 @@ import './App.css';
 type QuackType = {
   message: string;
   url: string;
-}
+};
 
 function App() {
   const [duckySrc, setDuckySrc] = React.useState('');
@@ -14,7 +14,7 @@ function App() {
     async function fetchImage() {
       try {
         const result = await fetch('https://random-d.uk/api/quack');
-        const json = await result.json() as QuackType;
+        const json = (await result.json()) as QuackType;
 
         setDuckySrc(json?.url ?? '/default_ducky.jpg');
       } catch (e) {
@@ -23,12 +23,16 @@ function App() {
       }
     }
     fetchImage();
-  })
+  });
 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img
+          src={logo}
+          className="App-logo"
+          alt="logo"
+        />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
@@ -36,16 +40,17 @@ function App() {
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
-          rel="noopener noreferrer"
-        >
+          rel="noopener noreferrer">
           Learn React
         </a>
         <div className="cypress-area">
-          <div data-qa="test">
-            Test for cypress
-          </div>
+          <div data-qa="test">Test for cypress</div>
           <div className="ducky-container">
-            <img data-qa="ducky-pic" src={duckySrc} alt="ducky" />
+            <img
+              data-qa="ducky-pic"
+              src={duckySrc}
+              alt="ducky"
+            />
           </div>
         </div>
       </header>

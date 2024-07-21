@@ -11,7 +11,7 @@ This is a template project that shows how to setup Cypress with a React project.
 ## Adding Cypress To A New Project
 
 1. Run `npm i --save-dev cypress`
-2. Run `npx cypress open` to open cypress for the first  time
+2. Run `npx cypress open` to open cypress for the first time
 3. Go through the setup, select E2E testing and have cypress auto generate the given files.
 4. Create a new `tsconfig.json` in the `cypress/` directory. Feel free to use this project's `cypress/tsconfig.json` as a template.
 
@@ -25,6 +25,7 @@ I also like to setup interceptors as a function, as seen in [`utils.ts`](cypress
 For scripting, I like to add [concurrently](https://www.npmjs.com/package/concurrently) and sometimes [cross-env](https://www.npmjs.com/package/cross-env), depending on the situation.
 
 This allows me to add scripts like `e2e` and `e2e:watch` as seen in this project's [`package.json`](package.json).
+
 ## Further Reading
 
 - [Create React App](https://create-react-app.dev/docs/getting-started/)

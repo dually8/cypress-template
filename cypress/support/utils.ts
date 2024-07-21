@@ -3,4 +3,4 @@ export const interceptApiCalls = () => {
   cy.intercept('**/api/quack', {
     fixture: 'example.json',
   }).as('quack');
-}
+};
